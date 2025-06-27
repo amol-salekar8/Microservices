@@ -11,15 +11,15 @@ import java.util.Date;
 @MappedSuperclass
 public class BaseEntity {
 
-    @Column(updatable = false)
+    @Column(name="created_at" ,updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(updatable = false)
+    @Column(name="created_by",updatable = false)
     private String createdBy;
 
-    @Column(insertable = false)
+    @Column(name="updated_at" ,insertable = false)
     private LocalDateTime updatedAt;
 
-    @Column(insertable = false)
+    @Column(name="updated_by" ,insertable = false)
     private String updatedBy;
 }

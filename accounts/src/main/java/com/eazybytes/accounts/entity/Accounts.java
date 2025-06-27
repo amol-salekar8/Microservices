@@ -10,8 +10,6 @@ import lombok.Data;
 public class Accounts extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "")
-
     private Long accountNumber;
 
     @Column(name="customer_id")
