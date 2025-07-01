@@ -5,6 +5,7 @@ import com.eazybytes.accounts.dto.ErrorReponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,6 +15,18 @@ import java.time.LocalDateTime;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
+
+    /**-- Handling all the exception logic --- */
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorReponseDto> handleAllTheException(Exception excp, WebRequest webRequest){
+        ErrorReponseDto errorReponseDto = new ErrorReponseDto(
+                webRequest.getDescription(false),
+                HttpStatus.INTERNAL_SERVER_ERROR,
+                excp.getMessage(),
+                LocalDateTime.now()
+        );
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorReponseDto);
+    }
 
     @ExceptionHandler(CustomerAlreadyExitsException.class)
     public ResponseEntity<ErrorReponseDto> handleCustomerAlreadyExitsException(CustomerAlreadyExitsException customerAlreadyExitsException, WebRequest webRequest){
