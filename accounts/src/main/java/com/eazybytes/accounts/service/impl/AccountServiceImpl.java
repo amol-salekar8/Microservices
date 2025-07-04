@@ -12,10 +12,10 @@ import com.eazybytes.accounts.mapper.CustomerMapper;
 import com.eazybytes.accounts.repository.AccountsRepository;
 import com.eazybytes.accounts.repository.CustomerRepository;
 import com.eazybytes.accounts.service.IAccountService;
+
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Random;
@@ -37,8 +37,6 @@ public class AccountServiceImpl implements IAccountService {
             throw new CustomerAlreadyExitsException("Customer already registered with given mobile number "
                     +customer.getMobileNo());
 
-        customer.setCreatedBy("Simple logic");
-        customer.setCreatedAt(LocalDateTime.now());
         Customer customerSavedObj =  customerRepository.save(customer);
         Accounts accounts = createNewAccount(customerSavedObj);
         accountsRepository.save(accounts);
@@ -52,8 +50,6 @@ public class AccountServiceImpl implements IAccountService {
         accounts.setAccountNumber(randomAccountNumber);
         accounts.setAccountType(AccountsConstants.SAVINGS);
         accounts.setBranchAddress(AccountsConstants.ADDRESS);
-        accounts.setCreatedBy("Simple logic");
-        accounts.setCreatedAt(LocalDateTime.now());
         return accounts;
     }
 
