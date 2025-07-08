@@ -2,9 +2,8 @@ package com.eazybytes.accounts.controller;
 
 import com.eazybytes.accounts.constant.AccountsConstants;
 import com.eazybytes.accounts.dto.CustomerDto;
-import com.eazybytes.accounts.dto.ErrorReponseDto;
+import com.eazybytes.accounts.dto.ErrorResponseDto;
 import com.eazybytes.accounts.dto.ReponseDto;
-import com.eazybytes.accounts.entity.Customer;
 import com.eazybytes.accounts.service.IAccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -80,7 +79,7 @@ public class AccountController {
                     description = "HTTP status Internal server error",
                     content = @Content(
                             schema = @Schema(
-                                    implementation = ErrorReponseDto.class
+                                    implementation = ErrorResponseDto.class
                             )
                     )
             )
@@ -109,7 +108,7 @@ public class AccountController {
                             description = "HTTP status  Internal server error",
                             content = @Content(
                                     schema = @Schema(
-                                            implementation = ErrorReponseDto.class
+                                            implementation = ErrorResponseDto.class
                                     )
                             )
                     )
