@@ -1,6 +1,6 @@
 package com.eazybytes.accounts.exception;
 
-import com.eazybytes.accounts.dto.ErrorReponseDto;
+import com.eazybytes.accounts.dto.ErrorResponseDto;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -40,8 +40,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     /**-- Handling all the exception logic --- */
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorReponseDto> handleAllTheException(Exception excp, WebRequest webRequest){
-        ErrorReponseDto errorReponseDto = new ErrorReponseDto(
+    public ResponseEntity<ErrorResponseDto> handleAllTheException(Exception excp, WebRequest webRequest){
+        ErrorResponseDto errorReponseDto = new ErrorResponseDto(
                 webRequest.getDescription(false),
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 excp.getMessage(),
@@ -51,8 +51,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(CustomerAlreadyExitsException.class)
-    public ResponseEntity<ErrorReponseDto> handleCustomerAlreadyExitsException(CustomerAlreadyExitsException customerAlreadyExitsException, WebRequest webRequest){
-        ErrorReponseDto errorReponseDto = new ErrorReponseDto(
+    public ResponseEntity<ErrorResponseDto> handleCustomerAlreadyExitsException(CustomerAlreadyExitsException customerAlreadyExitsException, WebRequest webRequest){
+        ErrorResponseDto errorReponseDto = new ErrorResponseDto(
                 webRequest.getDescription(false),
                 HttpStatus.BAD_REQUEST,
                 customerAlreadyExitsException.getMessage(),
@@ -63,8 +63,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ErrorReponseDto> handleResourceNotFoundException(ResourceNotFoundException resourceNotFoundException,WebRequest webRequest){
-        ErrorReponseDto errorReponseDto = new ErrorReponseDto(
+    public ResponseEntity<ErrorResponseDto> handleResourceNotFoundException(ResourceNotFoundException resourceNotFoundException,WebRequest webRequest){
+        ErrorResponseDto errorReponseDto = new ErrorResponseDto(
                 webRequest.getDescription(false),
                 HttpStatus.BAD_REQUEST,
                 resourceNotFoundException.getMessage(),

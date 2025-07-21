@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.eazybytes</groupId>
 	<artifactId>accounts</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>V1</version>
 	<name>accounts</name>
 	<description>Microservice for accounts</description>
 	<url/>
@@ -29,6 +29,7 @@
 	<properties>
 		<java.version>17</java.version>
 	</properties>
+	<packaging>jar</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
